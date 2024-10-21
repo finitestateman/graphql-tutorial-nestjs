@@ -9,4 +9,9 @@ export class UserResolvers {
     async getUserById(@Args('id', { type: () => Int}) id: number): Promise<User> {
         return mockUsers.find((user) => user.id === id);
     }
+
+    @Query((returns) => [User], { name: 'getAllUsers' })
+    async getUsers(): Promise<User[]> {
+        return mockUsers;
+    }
 }
