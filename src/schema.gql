@@ -22,3 +22,22 @@ type Query {
   getUserById(id: Int!): User
   getAllUsers: [User!]!
 }
+
+type Mutation {
+  createUser(createUserData: CreateUserInput!): User!
+  createUserSettings(createUserSetttingsData: CreateUserSettingsInput!): userSetting!
+}
+
+input CreateUserInput {
+  username: String!
+  displayName: String
+}
+
+input CreateUserSettingsInput {
+  userId: Int!
+  receiveEmails: Boolean = true
+  receiveNotifications: Boolean = true
+  language: String = "en"
+  timezone: String = "UTC"
+  darkMode: Boolean = false
+}
