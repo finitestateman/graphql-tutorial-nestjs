@@ -6,7 +6,7 @@ import { mockUserSetings } from 'src/__mocks__/mockUserSettings';
 import { CreateUserInput } from 'src/graphql/utils/CreateUserInput';
 
 @Resolver((of) => User)
-export class UserResolvers {
+export class UserResolver {
 
     @Query((returns) => User, { nullable: true, name: 'getUserById' })
     async getUserById(@Args('id', { type: () => Int}) id: number): Promise<User> {
