@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type userSetting {
+type UserSetting {
   userId: Int!
   receiveNotifications: Boolean!
   receiveEmails: Boolean!
@@ -15,7 +15,7 @@ type User {
   id: Int!
   username: String!
   displayName: String
-  settings: userSetting
+  settings: UserSetting
 }
 
 type Query {
@@ -25,7 +25,7 @@ type Query {
 
 type Mutation {
   createUser(createUserData: CreateUserInput!): User!
-  createUserSettings(createUserSetttingsData: CreateUserSettingsInput!): userSetting!
+  createUserSettings(createUserSetttingsData: CreateUserSettingsInput!): UserSetting!
 }
 
 input CreateUserInput {

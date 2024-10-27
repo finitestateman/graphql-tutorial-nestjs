@@ -1,7 +1,7 @@
 import { Resolver, Query, Args, Int, ResolveField, Parent, Mutation } from '@nestjs/graphql';
 import { User } from '../models/User';
 import { mockUsers } from 'src/__mocks__/mockUsers';
-import { userSetting } from '../models/UserSetting';
+import { UserSetting } from '../models/UserSetting';
 import { mockUserSetings } from 'src/__mocks__/mockUserSettings';
 import { CreateUserInput } from 'src/graphql/utils/CreateUserInput';
 
@@ -18,8 +18,8 @@ export class UserResolvers {
         return mockUsers;
     }
 
-    @ResolveField((returns) => userSetting, { nullable: true, name: 'settings' })
-    async getUserSettings(@Parent() user: User): Promise<userSetting> {
+    @ResolveField((returns) => UserSetting, { nullable: true, name: 'settings' })
+    async getUserSettings(@Parent() user: User): Promise<UserSetting> {
         return mockUserSetings.find((setting) => setting.userId === user.id);
     }
 
