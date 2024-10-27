@@ -9,23 +9,23 @@ export class UserSetting {
     @Field((type) => Int)
         userId: number;
 
-    @Column()
+    @Column({ default: false })
     @Field({ defaultValue: false })
         receiveNotifications: boolean;
 
-    @Column()
+    @Column({ default: false })
     @Field({ defaultValue: false })
         receiveEmails: boolean;
 
-    @Column()
+    @Column({ default: 'en' })
     @Field({ defaultValue: 'en' })
         language: string;
 
+    @Column({ nullable: true })
     @Field({ nullable: true })
-    @Column()
         timezone?: string;
 
-    @Column()
+    @Column({ default: false })
     @Field({ defaultValue: false })
         darkMode: boolean;
 }

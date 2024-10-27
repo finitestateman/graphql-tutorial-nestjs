@@ -26,10 +26,11 @@ import { User } from './graphql/models/User';
                 UserSetting
             ],
             synchronize: true,
+            logging: true,
         }),
         UserModule
     ],
     controllers: [],
-    providers: [UserSettingResolver],
+    providers: [],
 })
 export class AppModule {}

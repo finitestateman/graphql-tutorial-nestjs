@@ -24,8 +24,13 @@ type Query {
 }
 
 type Mutation {
-  createUserSettings(createUserSetttingsData: CreateUserSettingsInput!): UserSetting!
   createUser(createUserData: CreateUserInput!): User!
+  createUserSettings(createUserSetttingsData: CreateUserSettingsInput!): UserSetting!
+}
+
+input CreateUserInput {
+  username: String!
+  displayName: String
 }
 
 input CreateUserSettingsInput {
@@ -35,9 +40,4 @@ input CreateUserSettingsInput {
   language: String = "en"
   timezone: String = "UTC"
   darkMode: Boolean = false
-}
-
-input CreateUserInput {
-  username: String!
-  displayName: String
 }

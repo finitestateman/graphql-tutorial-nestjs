@@ -6,11 +6,15 @@ import { mockUserSetings } from 'src/__mocks__/mockUserSettings';
 import { CreateUserInput } from 'src/graphql/utils/CreateUserInput';
 import { UserService } from './UserService';
 import { Inject } from '@nestjs/common';
+import { UserSettingService } from './UserSettingService';
 
 @Resolver((of) => User)
 export class UserResolver {
 
-    constructor(private readonly userService: UserService) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly userSettingService: UserSettingService,
+    ) {}
 
 
     @Query((returns) => User, { nullable: true, name: 'getUserById' })
@@ -25,7 +29,7 @@ export class UserResolver {
 
     @ResolveField((returns) => UserSetting, { nullable: true, name: 'settings' })
     async getUserSettings(@Parent() user: User): Promise<UserSetting> {
-        return mockUserSetings.find((setting) => setting.userId === user.id);
+        return this.userSettingService.getUserSettingById(user.id);
     }
 
     @Mutation((returns) => User, { name: 'createUser' })
